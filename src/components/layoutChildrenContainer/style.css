@@ -1,0 +1,25 @@
+.logoLayout {
+    width: 250px;
+    transition: all ease 0.2s;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+
+.logoLayout:hover {
+    scale: 1.05;
+    transition: all ease 0.2s;
+}
+  
+.layoutChildrenContainerNavEnabled {
+    width: calc(100% - 150px);
+    margin-left: 150px;
+    height: 100vh;
+    transition: all ease 0.2s;
+}
+
+.layoutChildrenContainerNavDisabled {
+    width: 100%;
+    height: 100vh;
+    margin-left: 0px;
+    transition: all ease 0.2s;
+}

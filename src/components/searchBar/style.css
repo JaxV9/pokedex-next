@@ -1,0 +1,106 @@
+.searchBarContainer {
+    position: fixed;
+    z-index: 1;
+    width: 40%;
+    min-width: 500px;
+    height: fit-content;
+    top: 25%;
+    left: 50%;
+    margin-top: -50px; /* Adjust this value to half of the container's height */
+    margin-left: -20%; /* Adjust this value to half of the container's width */
+    background: rgba(47, 47, 47, 0.768);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.4px);
+    -webkit-backdrop-filter: blur(6.4px);
+    display: flex;
+    flex-direction: column;
+}
+
+.searchBarInput {
+    width: 95%;
+    height: 64px;
+    font-size: 28px;
+    padding: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 255, 255, 0);
+    color: #efeeee;
+    border: none;
+    outline: none;
+}
+
+.closeSearchBarBtn {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: -22px;
+    left: -22px;
+    cursor: pointer;
+    background-image: url('/assets/cross.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: all ease 0.2s;
+}
+
+.closeSearchBarBtn:hover {
+    scale: 1.2;
+    transition: all ease 0.2s;
+}
+
+.resultsSearchBar {
+    width: 100%;
+    height: 500px;
+    border-top: 1px solid #efeeee;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    animation: fadeInSearchBar 0.2s ease-in;
+    overflow-y: scroll;
+}
+
+.resultsSearchBarHidden {
+    width: 100%;
+    height: 0;
+    transition: all ease 0.2s;
+}
+
+@keyframes fadeInSearchBar {
+    0% { height: 0; }
+    100% { height: 500px; }
+}
+
+.pokemonSearch {
+    font-size: 18px;
+    border-bottom: 0.5px solid #efeeee83;
+    padding-left: 28px;
+    padding-right: 28px;
+    text-transform: capitalize;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transition: all ease 0.2s;
+    cursor: pointer;
+}
+
+.pokemonSearch:hover {
+    background-color: #f2f2f213;
+    transition: all ease 0.2s;
+}
+
+.pokemonSearchImage > img {
+    width: 100px;
+    height: auto;
+    margin: auto;
+}
+.pokemonSearchText {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.pokemonSearchText > p {
+    display: block;
+    margin: auto;
+    height: fit-content;
+}

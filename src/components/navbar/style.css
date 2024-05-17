@@ -1,0 +1,129 @@
+.navBarContainer {
+    width: 120px;
+    height: 100vh;
+    background-color: #2F2F2F;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    transition: all ease 0.2s;
+}
+
+.navBarContainerDisabled {
+    width: 120px;
+    height: 100vh;
+    background-color: #2F2F2F;
+    position: fixed;
+    top: 0;
+    left: -120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    transition: all ease 0.2s;
+}
+
+.navBarButton, .navBarButtonFocused, .navBarSearchButton {
+    width: 70%;
+    border-radius: 8px;
+    background-color: rgba(255, 0, 0, 0);
+    transition: all ease 0.2s;
+    cursor: pointer;
+    display: flex;
+}
+
+.navBarButton:hover, .navBarSearchButton:hover {
+    background-color: #ffffff5f;
+    transition: all ease 0.2s;
+}
+
+.navBarButton:hover .navBarIcon {
+    scale: 1.1;
+    transition: all ease 0.2s;
+}
+
+.navBarButton > a, .navBarButtonFocused > a {
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.navBarSearchButton {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.navBarButtonFocused {
+    scale: 1.1;
+    background-color: #ffffffa2;
+}
+
+.navBarIcon {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: all ease 0.2s;
+}
+
+.navBarIconFocused {
+    width: 40px;
+    height: 40px;
+    scale: 1.1;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #FFFFFF;
+}
+
+.home {
+    background-image: url("/assets/home.svg");
+    opacity: 0.5;
+}
+.homeFocused {
+    background-image: url("/assets/home.svg");
+    opacity: 1;
+}
+
+.search {
+    background-image: url("/assets/search.svg");
+    opacity: 0.5;
+}
+.searchFocused {
+    background-image: url("/assets/search.svg");
+    opacity: 1;
+}
+
+.pokeball {
+    background-image: url("/assets/pokeball.svg");
+    opacity: 0.5;
+}
+.pokeballFocused {
+    background-image: url("/assets/pokeball.svg");
+    opacity: 1;
+}
+
+.navBarToggle {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: -40px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: all ease 0.2s;
+}
+
+.navBarToggle:hover {
+    scale: 1.2;
+    transition: all ease 0.2s;
+}

@@ -1,0 +1,13 @@
+.loadMoreBtn {
+    padding: 8px 16px;
+    background-color: rgb(15, 198, 15);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}
+
+.loadMoreBtn:hover {
+    background-color: rgb(14, 168, 14);
+}
