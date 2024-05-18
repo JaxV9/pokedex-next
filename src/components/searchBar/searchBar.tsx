@@ -1,5 +1,7 @@
 'use client';
 
+import { getLastElementFromUrl } from "@/utils/format";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 type SearchBarPropsType = {
@@ -8,9 +10,9 @@ type SearchBarPropsType = {
 
 export const SearchBar = ({ toggleProps }: SearchBarPropsType) => {
 
-    const [pokemonNameList, setPokemonNameList] = useState<PokemonType[]>([])
+    const [pokemonNameList, setPokemonNameList] = useState<PokemonShortType[]>([])
     const [currentSearch, setCurrentSearch] = useState<string | null>(null)
-    const [results, setResults] = useState<PokemonType[]>([])
+    const [results, setResults] = useState<PokemonShortType[]>([])
 
     const fetchPokemonList = async (limit: number) => {
         try {
@@ -26,13 +28,10 @@ export const SearchBar = ({ toggleProps }: SearchBarPropsType) => {
         setCurrentSearch(e.target.value)
     }
 
-    const getLastElementFromUrl = (url: string): string => {
-        const urlParts = url.split("/"); return urlParts[urlParts.length - 2]
-    };
     
     useEffect(() => {
         if (currentSearch !== null && currentSearch !== "") {
-            const filteredResults = pokemonNameList.filter(pokemon => pokemon.name.includes(currentSearch));
+            const filteredResults = pokemonNameList.filter(pokemon => pokemon.name.includes(currentSearch.toLowerCase()));
             setResults(filteredResults);
         }
         if(currentSearch === "") {
@@ -89,14 +88,16 @@ export const SearchBar = ({ toggleProps }: SearchBarPropsType) => {
                     <div className={results.length > 0 ? "resultsSearchBar" : "resultsSearchBarHidden"}>
                         {results.length > 0 ?
                             results.map((pokemon, index) => (
-                                <div className="pokemonSearch" key={index}>
-                                    <div className="pokemonSearchImage">
-                                        <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + [getLastElementFromUrl(pokemon.url)] + ".png"} alt="" /> 
+                                <Link href={"/pokemon-library/" + pokemon.name} onClick={toggleProps}>
+                                    <div className="pokemonSearch" key={index}>
+                                        <div className="pokemonSearchImage">
+                                            <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + [getLastElementFromUrl(pokemon.url)] + ".png"} alt="" /> 
+                                        </div>
+                                        <div className="pokemonSearchText">
+                                            <p>{pokemon.name}</p>
+                                        </div>
                                     </div>
-                                    <div className="pokemonSearchText">
-                                        <p>{pokemon.name}</p>
-                                    </div>
-                                </div>
+                                </Link>
                             ))
                             : null}
                     </div>

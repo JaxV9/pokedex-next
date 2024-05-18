@@ -1,11 +1,13 @@
 'use client';
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { LoadMoreBtn } from "../ui/buttons/loadMoreBtn/loadMoreBtn";
+import Link from "next/link";
+import { getLastElementFromUrl } from "@/utils/format";
 
 
 export const PokemonList = () => {
 
-    const [pokemonList, setPokemonList] = useState<PokemonType[]>([])
+    const [pokemonList, setPokemonList] = useState<PokemonShortType[]>([])
     const [limitLenghtPokemon, setLimitLenghtPokemon] = useState<number>(50)
     const [currentNbPokemon, setCurrentNbPokemon] = useState<number>(0)
     const [countPokemon, setCountPokemon] = useState<number>(0)
@@ -46,11 +48,14 @@ export const PokemonList = () => {
                 <p className="pokemonListInfos">{currentNbPokemon} pokémons out of {countPokemon}</p>
                 <div className="pokemonListContainer">
                     {pokemonList.length > 0 ?
-                        pokemonList.map((pokemon, index) => (
-                            <div className="pokemoncard" key={index}>
-                                <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + [index + 1] + ".png"} alt="" />
-                                <p>{pokemon.name}</p>
-                            </div>
+                        pokemonList.map((pokemon) => (
+                            <Link href={"/pokemon-library/" + pokemon.name} key={getLastElementFromUrl(pokemon.url)}>
+                                <div className="pokemoncard">
+                                    <img className="pokemonImageList" src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + [getLastElementFromUrl(pokemon.url)] + ".png"} alt="" />
+                                    <p>{pokemon.name}</p>
+                                    <p className="minInfos">N°{getLastElementFromUrl(pokemon.url).padStart(4, '0')}</p>
+                                </div>
+                            </Link>
                         ))
                         : null}
                 </div>

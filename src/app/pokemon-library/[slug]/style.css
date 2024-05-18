@@ -1,0 +1,80 @@
+.pokemonPicture {
+    width: 500px;
+}
+
+.pokemonInfoContainer {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all ease 0.2s;
+    padding-bottom: 100px;
+}
+
+.pokemonInfoHeroContainer {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.pokemonSpeciesContainer {
+    padding-top: 50px;
+}
+
+.pokemonSpeciesTextContainer {
+    width: 100%;
+    padding: 16px;
+    background: rgba(47, 47, 47, 0.768);
+    border-radius: 16px;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.4px);
+    -webkit-backdrop-filter: blur(6.4px);
+}
+
+.pokemonSpeciesTextContainer > p {
+    text-align: justify;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#pokemonLegendSpecies {
+    text-align: justify;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(198, 198, 198);
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.navSpeciesContainer {
+    display: flex;
+    gap: 28px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.arrowLeft, .arrowRight {
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all ease 0.2s;
+    opacity: 0.6;
+}
+
+.arrowLeft {
+    background-image: url('/assets/arrow-left-tag.svg');
+}
+
+.arrowRight {
+    background-image: url('/assets/arrow-right-tag.svg');
+}
+
+.arrowLeft:hover, .arrowRight:hover {
+    scale: 1.1;
+    transition: all ease 0.2s;
+    opacity: 1;
+}
