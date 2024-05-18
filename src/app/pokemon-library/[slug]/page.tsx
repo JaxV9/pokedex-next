@@ -11,6 +11,7 @@ export default function PokemonSheet() {
     const [pokemonSpeciesFiltered, setPokemonSpeciesFiltered] = useState<PokemonSpecies[]>([])
     const [currentSpecy, setCurrentSpecy] = useState<number>(0)
     const [currentLang, setCurrentLang] = useState<string>("en")
+    const [isSpecies, setIsSpecies] = useState<boolean>(true)
 
 
     const fetchPokemon = async () => {
@@ -26,6 +27,9 @@ export default function PokemonSheet() {
     const fetchPokemonSpecies = async (id: number) => {
         try {
             let response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
+            if (response.status === 404) {
+                setIsSpecies(false)
+            }
             let data = await response.json()
             setPokemonSpecies(data.flavor_text_entries)
         } catch {
@@ -52,12 +56,6 @@ export default function PokemonSheet() {
         }
     }, [pokemonSpecies])
 
-    useEffect(() => {
-        if (pokemonSpeciesFiltered.length > 0) {
-            console.log(pokemonSpeciesFiltered)
-        }
-    }, [pokemonSpeciesFiltered])
-
     return (
         <>
             {pokemon ?
@@ -67,30 +65,42 @@ export default function PokemonSheet() {
                             <h1>{pokemon.name}</h1>
                             <img className="pokemonPicture" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} />
                         </div>
-                        <div className='pokemonSpeciesContainer'>
-                            <p id='pokemonLegendSpecies'>
-                                {currentSpecy + 1}/{pokemonSpeciesFiltered.length}
-                            </p>
-                            {pokemonSpeciesFiltered.length > 0 ?
-                                <div className='pokemonSpeciesTextContainer'>
-                                    <p>{String(pokemonSpeciesFiltered[currentSpecy].flavor_text)}</p>
-                                    <p id='pokemonLegendSpecies'>Version : {String(pokemonSpeciesFiltered[currentSpecy].version.name)}</p>
+                        {
+                            isSpecies === true ?
+
+                                <div className='pokemonSpeciesContainer'>
+                                    <p id='pokemonLegendSpecies'>
+                                        {currentSpecy + 1}/{pokemonSpeciesFiltered.length}
+                                    </p>
+                                    {pokemonSpeciesFiltered.length > 0 ?
+                                        <div className='pokemonSpeciesTextContainer'>
+                                            <p>{String(pokemonSpeciesFiltered[currentSpecy].flavor_text)}</p>
+                                            <p id='pokemonLegendSpecies'>Version : {String(pokemonSpeciesFiltered[currentSpecy].version.name)}</p>
+                                        </div>
+                                        :
+                                        null
+                                    }
+                                    {pokemonSpeciesFiltered.length === 0 ?
+                                        <div className='pokemonSpeciesTextContainer'>
+                                            <p>...</p>
+                                            <p id='pokemonLegendSpecies'>Version : ...</p>
+                                        </div>
+                                        :
+                                        null
+                                    }
+                                    <div className='navSpeciesContainer'>
+                                        {currentSpecy > 0?
+                                            <div onClick={() => setCurrentSpecy(currentSpecy - 1)} className='arrowLeft'></div>
+                                            : null}
+                                        {currentSpecy + 1 !== pokemonSpeciesFiltered.length?
+                                            <div onClick={() => setCurrentSpecy(currentSpecy + 1)} className='arrowRight'></div>
+                                            : null}
+                                    </div>
                                 </div>
-                                :
-                                <div className='pokemonSpeciesTextContainer'>
-                                    <p>...</p>
-                                    <p id='pokemonLegendSpecies'>Version : ...</p>
-                                </div>
-                            }
-                            <div className='navSpeciesContainer'>
-                                {currentSpecy > 0 ?
-                                    <div onClick={() => setCurrentSpecy(currentSpecy - 1)} className='arrowLeft'></div>
-                                    : null}
-                                {currentSpecy + 1 !== pokemonSpeciesFiltered.length ?
-                                    <div onClick={() => setCurrentSpecy(currentSpecy + 1)} className='arrowRight'></div>
-                                    : null}
-                            </div>
-                        </div>
+
+                                : null
+                        }
+
                     </div>
 
                 </section>
