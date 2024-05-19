@@ -50,11 +50,12 @@ export const SearchBar = ({ toggleProps }: SearchBarPropsType) => {
     }, [])
 
     //Close searchbar when you taping escape or cliking out of the box
-    const handleEscapePress = (event: KeyboardEvent) => {
+    const handleEscapePress = useCallback((event: KeyboardEvent) => {
         if (event.key === 'Escape') {
             toggleProps();
         }
-    };
+    }, [toggleProps]);
+    
     useEffect(() => {
         document.addEventListener('keydown', handleEscapePress);
         return () => {
