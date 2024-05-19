@@ -60,7 +60,7 @@ export const SearchBar = ({ toggleProps }: SearchBarPropsType) => {
         return () => {
             document.removeEventListener('keydown', handleEscapePress);
         };
-    }, []);
+    }, [handleEscapePress]);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
