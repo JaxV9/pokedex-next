@@ -89,8 +89,8 @@ export const SearchBar = ({ toggleProps }: SearchBarPropsType) => {
                     <div className={results.length > 0 ? "resultsSearchBar" : "resultsSearchBarHidden"}>
                         {results.length > 0 ?
                             results.map((pokemon, index) => (
-                                <Link href={"/pokemon-library/" + pokemon.name} onClick={toggleProps}>
-                                    <div className="pokemonSearch" key={index}>
+                                <Link href={"/pokemon-library/" + pokemon.name} onClick={toggleProps} key={index}>
+                                    <div className="pokemonSearch" >
                                         <div className="pokemonSearchImage">
                                             <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + [getLastElementFromUrl(pokemon.url)] + ".png"} alt="" /> 
                                         </div>
