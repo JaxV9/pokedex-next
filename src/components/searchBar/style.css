@@ -6,8 +6,8 @@
     height: fit-content;
     top: 25%;
     left: 50%;
-    margin-top: -50px; /* Adjust this value to half of the container's height */
-    margin-left: -20%; /* Adjust this value to half of the container's width */
+    margin-top: -50px;
+    margin-left: -20%;
     background: rgba(47, 47, 47, 0.768);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
