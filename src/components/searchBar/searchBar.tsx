@@ -37,7 +37,7 @@ export const SearchBar = ({ toggleProps }: SearchBarPropsType) => {
         if(currentSearch === "") {
             setResults([])
         }
-    },[currentSearch])
+    },[currentSearch, pokemonNameList])
 
     const autoFocusInput = useCallback((inputElement: any) => {
         if (inputElement) {
