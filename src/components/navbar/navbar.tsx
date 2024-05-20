@@ -33,22 +33,35 @@ export const Navbar = ({ navBarEnabledProps, setNavBarEnabledProps }: navBarProp
     return (
         <>
             {isSearching ? <SearchBar toggleProps={toggleSearchBar} /> : null}
-            <div className="burgerMenuContainer">
+            <div className="burgerMenuContainer"
+            style={navBarEnabledProps ?{background:"rgba(47, 47, 47, 0.768)"}:{background:"#2F2F2F"}}>
                 <div onClick={toggleNavBar} className="burgerMenu"></div>
             </div>
             <div className={navBarEnabledProps ? "navBarContainer" : "navBarContainerDisabled"}>
-                <div className="navBarButton">
-                    <Link href="/">
-                        <div className={currentPath === "/" ? "navBarIconFocused homeFocused" : "navBarIcon home"}></div>
-                    </Link>
+                <div className="navBarIconContainer">
+                    <div className="navBarButton">
+                        <Link href="/">
+                            <div className={currentPath === "/" ? "navBarIconFocused homeFocused" : "navBarIcon home"}>
+                            </div>
+                            <span className={currentPath === "/" ? "navLabelBtn navLabelFocused": "navLabelBtn"}>Home</span>
+                        </Link>
+                    </div>
                 </div>
-                <div onClick={toggleSearchBar} className="navBarSearchButton">
-                    <div className={currentPath === "/search" ? "navBarIconFocused searchFocused" : "navBarIcon search"}></div>
+                <div className="navBarIconContainer">
+                    <div onClick={toggleSearchBar} className="navBarSearchButton">
+                        <div className="navBarIcon search">
+                        </div>
+                        <span className="navLabelBtn">Search</span>
+                    </div>
                 </div>
-                <div className="navBarButton">
-                    <Link href="/pokemon-library">
-                        <div className={currentPath === "/pokemon-library" ? "navBarIconFocused pokeballFocused" : "navBarIcon pokeball"}></div>
-                    </Link>
+                <div className="navBarIconContainer">
+                    <div className="navBarButton">
+                        <Link href="/pokemon-library">
+                            <div className={currentPath === "/pokemon-library" ? "navBarIconFocused pokeballFocused" : "navBarIcon pokeball"}>
+                            </div>
+                            <span className={currentPath === "/pokemon-library" ? "navLabelBtn navLabelFocused": "navLabelBtn"}>Pokémon library</span>
+                        </Link>
+                    </div>
                 </div>
                 <div className={navBarEnabledProps ? "navBarToggle" : "navBarToggleHide"}
                     onClick={toggleNavBar}>
