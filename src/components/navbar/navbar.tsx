@@ -10,7 +10,7 @@ type navBarPropsType = {
     setNavBarEnabledProps: Dispatch<SetStateAction<boolean>>
 }
 
-export const Navbar = ({navBarEnabledProps, setNavBarEnabledProps}: navBarPropsType) => {
+export const Navbar = ({ navBarEnabledProps, setNavBarEnabledProps }: navBarPropsType) => {
 
     const { isSearching, setIsSearching } = useContext(SearchContext)!;
 
@@ -28,31 +28,32 @@ export const Navbar = ({navBarEnabledProps, setNavBarEnabledProps}: navBarPropsT
 
     useEffect(() => {
         setCurrentPath(pathname)
-    },[pathname])
+    }, [pathname])
 
-    return(
+    return (
         <>
-            {isSearching ? <SearchBar toggleProps={toggleSearchBar}/> : null}
-            <div className={navBarEnabledProps ? "navBarContainer" : "navBarContainerDisabled" }>
+            {isSearching ? <SearchBar toggleProps={toggleSearchBar} /> : null}
+            <div className="burgerMenuContainer">
+                <div onClick={toggleNavBar} className="burgerMenu"></div>
+            </div>
+            <div className={navBarEnabledProps ? "navBarContainer" : "navBarContainerDisabled"}>
                 <div className="navBarButton">
                     <Link href="/">
-                        <div className={currentPath === "/" ? "navBarIconFocused homeFocused":"navBarIcon home"}></div>
+                        <div className={currentPath === "/" ? "navBarIconFocused homeFocused" : "navBarIcon home"}></div>
                     </Link>
                 </div>
                 <div onClick={toggleSearchBar} className="navBarSearchButton">
-                    <div className={currentPath === "/search" ? "navBarIconFocused searchFocused":"navBarIcon search"}></div>
+                    <div className={currentPath === "/search" ? "navBarIconFocused searchFocused" : "navBarIcon search"}></div>
                 </div>
                 <div className="navBarButton">
                     <Link href="/pokemon-library">
-                        <div className={currentPath === "/pokemon-library" ? "navBarIconFocused pokeballFocused":"navBarIcon pokeball"}></div>
+                        <div className={currentPath === "/pokemon-library" ? "navBarIconFocused pokeballFocused" : "navBarIcon pokeball"}></div>
                     </Link>
                 </div>
-
-                <div className="navBarToggle"
-                style={navBarEnabledProps ? { backgroundImage: "url(/assets/arrow-left.svg)" } :
-                { backgroundImage: "url(/assets/arrow-right.svg)" }} onClick={toggleNavBar}></div>
+                <div className={navBarEnabledProps ? "navBarToggle" : "navBarToggleHide"}
+                    onClick={toggleNavBar}>
+                </div>
             </div>
-            
         </>
     )
 }

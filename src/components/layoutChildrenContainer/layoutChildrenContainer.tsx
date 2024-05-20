@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Navbar } from "../navbar/navbar";
 import Link from "next/link";
 import SearchContext from "@/contexts/searchContext";

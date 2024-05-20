@@ -24,6 +24,11 @@ export default function Home() {
               </Link>
             </div>
           </div>
+          <div className="mentionHome">
+            <Link href="https://www.linkedin.com/in/layan-jason-developpeur/">
+              Site créé et maintenu par LAYAN Jason
+            </Link>
+          </div>
         </div>
       </section>
     </main>

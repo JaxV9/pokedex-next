@@ -1,10 +1,9 @@
-.navBarContainer {
+.navBarContainer, .navBarContainerDisabled {
     width: 120px;
     height: 100vh;
     background-color: #2F2F2F;
     position: fixed;
     top: 0;
-    left: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,21 +12,11 @@
     transition: all ease 0.2s;
     z-index: 2;
 }
-
+.navBarContainer {
+    left: 0;
+}
 .navBarContainerDisabled {
-    width: 120px;
-    height: 100vh;
-    background-color: #2F2F2F;
-    position: fixed;
-    top: 0;
     left: -120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 28px;
-    transition: all ease 0.2s;
-    z-index: 2;
 }
 
 .navBarButton, .navBarButtonFocused, .navBarSearchButton {
@@ -113,7 +102,8 @@
     opacity: 1;
 }
 
-.navBarToggle {
+
+.navBarToggle, .navBarToggleHide {
     width: 40px;
     height: 40px;
     position: absolute;
@@ -125,7 +115,56 @@
     transition: all ease 0.2s;
 }
 
+.navBarToggle {
+    background-image: url('/assets/arrow-left.svg');
+}
+
+.navBarToggleHide {
+    background-image: url('/assets/arrow-right.svg');
+}
+
 .navBarToggle:hover {
     scale: 1.2;
     transition: all ease 0.2s;
+}
+
+
+
+@media (max-width: 425px) {
+
+    .navBarContainer {
+        left: -120px;
+    }
+
+    .navBarContainerDisabled {
+        width: 100%;
+        left: 0;
+    }
+
+    .burgerMenuContainer {
+        width: 100%;
+        padding: 8px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        background: rgba(47, 47, 47, 0.768);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.4px);
+        -webkit-backdrop-filter: blur(6.4px);
+    }
+
+    .burgerMenu {
+        width: 40px;
+        height: 40px;
+        background-image: url('/assets/burger-menu.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        cursor: pointer;
+    }
+
+    .navBarToggle, .navBarToggleHide {
+        display: none;
+    }
 }
