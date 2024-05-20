@@ -36,6 +36,7 @@ export const Navbar = ({ navBarEnabledProps, setNavBarEnabledProps }: navBarProp
             <div className="burgerMenuContainer"
             style={navBarEnabledProps ?{background:"rgba(47, 47, 47, 0.768)"}:{background:"#2F2F2F"}}>
                 <div onClick={toggleNavBar} className="burgerMenu"></div>
+                <div onClick={toggleSearchBar} className="searchMenu"></div>
             </div>
             <div className={navBarEnabledProps ? "navBarContainer" : "navBarContainerDisabled"}>
                 <div className="navBarIconContainer">
@@ -47,7 +48,7 @@ export const Navbar = ({ navBarEnabledProps, setNavBarEnabledProps }: navBarProp
                         </Link>
                     </div>
                 </div>
-                <div className="navBarIconContainer">
+                <div id="navBarIconSearchContainer" className="navBarIconContainer">
                     <div onClick={toggleSearchBar} className="navBarSearchButton">
                         <div className="navBarIcon search">
                         </div>
