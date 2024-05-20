@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { LayoutChildrenContainer } from "@/components/layoutChildrenContainer/layoutChildrenContainer";
+import React, { useState } from "react";
+import SearchContext from "@/contexts/searchContext";
 
 
 export const metadata: Metadata = {

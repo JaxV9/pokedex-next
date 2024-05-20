@@ -67,10 +67,13 @@ export const SearchBar = ({ toggleProps }: SearchBarPropsType) => {
         function handleClickOutside(event: MouseEvent) {
             const searchBarContainer = document.querySelector('.searchBarContainer');
             const navBarSearchButton = document.querySelector('.navBarSearchButton');
+            const homeSearchBtn = document.querySelector('.homeSearchBtn')
             if (searchBarContainer
                 && !searchBarContainer.contains(event.target as Node)
                 && navBarSearchButton
-                && !navBarSearchButton.contains(event.target as Node)) {
+                && !navBarSearchButton.contains(event.target as Node)
+                && homeSearchBtn
+                && !homeSearchBtn.contains(event.target as Node)) {
                 toggleProps();
             }
         }

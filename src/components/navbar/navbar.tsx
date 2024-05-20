@@ -1,8 +1,9 @@
 'use client';
 import Link from "next/link";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { usePathname } from 'next/navigation'
 import { SearchBar } from "../searchBar/searchBar";
+import SearchContext from "@/contexts/searchContext";
 
 type navBarPropsType = {
     navBarEnabledProps: boolean,
@@ -11,10 +12,11 @@ type navBarPropsType = {
 
 export const Navbar = ({navBarEnabledProps, setNavBarEnabledProps}: navBarPropsType) => {
 
+    const { isSearching, setIsSearching } = useContext(SearchContext)!;
+
     const pathname = usePathname()
 
     const [currentPath, setCurrentPath] = useState<string>('')
-    const [isSearching, setIsSearching] = useState<boolean>(false)
 
     const toggleNavBar = () => {
         setNavBarEnabledProps(!navBarEnabledProps)
@@ -27,10 +29,6 @@ export const Navbar = ({navBarEnabledProps, setNavBarEnabledProps}: navBarPropsT
     useEffect(() => {
         setCurrentPath(pathname)
     },[pathname])
-
-    const test = () => {
-        console.log("hello")
-    }
 
     return(
         <>

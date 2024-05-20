@@ -1,7 +1,7 @@
 'use client';
 
 type LoadMoreBtnPropsType = {
-    functionProps: any,
+    functionProps?: any,
     textProps: string
 }
 
