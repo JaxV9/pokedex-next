@@ -13,6 +13,7 @@ type navBarPropsType = {
 export const Navbar = ({ navBarEnabledProps, setNavBarEnabledProps }: navBarPropsType) => {
 
     const { isSearching, setIsSearching } = useContext(SearchContext)!;
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const pathname = usePathname()
 
@@ -41,7 +42,7 @@ export const Navbar = ({ navBarEnabledProps, setNavBarEnabledProps }: navBarProp
             <div className={navBarEnabledProps ? "navBarContainer" : "navBarContainerDisabled"}>
                 <div className="navBarIconContainer">
                     <div className="navBarButton">
-                        <Link href="/">
+                        <Link href="/" onClick={windowWidth <= 425 ? toggleNavBar : undefined}>
                             <div className={currentPath === "/" ? "navBarIconFocused homeFocused" : "navBarIcon home"}>
                             </div>
                             <span className={currentPath === "/" ? "navLabelBtn navLabelFocused": "navLabelBtn"}>Home</span>
@@ -57,7 +58,7 @@ export const Navbar = ({ navBarEnabledProps, setNavBarEnabledProps }: navBarProp
                 </div>
                 <div className="navBarIconContainer">
                     <div className="navBarButton">
-                        <Link href="/pokemon-library">
+                        <Link href="/pokemon-library" onClick={windowWidth <= 425 ? toggleNavBar : undefined}>
                             <div className={currentPath === "/pokemon-library" ? "navBarIconFocused pokeballFocused" : "navBarIcon pokeball"}>
                             </div>
                             <span className={currentPath === "/pokemon-library" ? "navLabelBtn navLabelFocused": "navLabelBtn"}>Pokémon library</span>
