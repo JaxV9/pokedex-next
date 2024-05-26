@@ -10,6 +10,36 @@
     padding-bottom: 100px;
 }
 
+.navPokemonContainer {
+    width: 100%;
+    height: fit-content;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-around;
+    transition: all ease 0.2s;
+    border-bottom: 2px solid #efeeee13;
+    margin-bottom: 50px;
+}
+
+.navPokemon {
+    cursor: pointer;
+    transition: all ease 0.2s;
+    color: #efeeee;
+    border-bottom: 2px solid #efeeee00;
+}
+
+.navPokemon:hover {
+    cursor: pointer;
+    transition: all ease 0.2s;
+    scale: 1.1;
+    font-weight: 500;
+}
+
+.focusNav {
+    font-weight: 500;
+    border-bottom: 2px solid #efeeee;
+}
+
 .pokemonInfoHeroContainer {
     width: 100%;
     height: fit-content;

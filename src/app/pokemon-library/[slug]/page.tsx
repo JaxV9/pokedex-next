@@ -10,6 +10,8 @@ export default function PokemonSheet() {
     const [pokemon, setPokemon] = useState<PokemonDatas | null>(null)
     const [currentLang, setCurrentLang] = useState<string>("en")
 
+    const [currentNav, setCurrentNav] = useState<string>("about")
+
 
     const fetchPokemon = async () => {
         try {
@@ -35,8 +37,25 @@ export default function PokemonSheet() {
                             <img className="pokemonPicture" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} />
                         </div>
                         <div className='pokemonDatasContainer'>
-                            <PokemonSpecies currentLangProps={currentLang} pokemonProps={pokemon} />
-                            <div className='pokemonStatsContainer'>
+                            <div className='navPokemonContainer'>
+                                <span className={currentNav === "about" ? "navPokemon focusNav": "navPokemon"}
+                                onClick={() => setCurrentNav("about")}>About</span>
+                                <span className={currentNav === "evolution" ? "navPokemon focusNav": "navPokemon"}
+                                onClick={() => setCurrentNav("evolution")}>Evolutions</span>
+                                <span className={currentNav === "stats" ? "navPokemon focusNav": "navPokemon"}
+                                onClick={() => setCurrentNav("stats")}>Stats</span>
+                                <span className={currentNav === "moves" ? "navPokemon focusNav": "navPokemon"}
+                                onClick={() => setCurrentNav("moves")}>Moves</span>
+                            </div>
+                            {
+                                currentNav === "about" ?
+                                    <PokemonSpecies currentLangProps={currentLang} pokemonProps={pokemon} />
+                                    :
+                                    null
+                            }
+
+
+                            {/* <div className='pokemonStatsContainer'>
                                 <p>Height : {pokemon.height / 10}m</p>
                                 <p>Weight : {pokemon.weight / 10}kg</p>
                                 <div>
@@ -51,7 +70,7 @@ export default function PokemonSheet() {
                                             : null}
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </section>

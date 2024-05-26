@@ -38,6 +38,24 @@ export const PokemonSpecies = ({ currentLangProps, pokemonProps }: PokemonSpecie
         }
     }
 
+    const navArrowLess = () => {
+        if (currentSpecy > 0) {
+            setCurrentSpecy(currentSpecy - 1)
+        }
+        if (currentSpecy === 0) {
+            setCurrentSpecy(pokemonSpeciesFiltered.length - 1)
+        }
+    }
+
+    const navArrowMore = () => {
+        if (currentSpecy + 1 !== pokemonSpeciesFiltered.length) {
+            setCurrentSpecy(currentSpecy + 1)
+        }
+        if (currentSpecy + 1 === pokemonSpeciesFiltered.length) {
+            setCurrentSpecy(0)
+        }
+    }
+
     useEffect(() => {
         if (pokemonProps) {
             fetchPokemonSpecies(pokemonProps.id)
@@ -49,13 +67,13 @@ export const PokemonSpecies = ({ currentLangProps, pokemonProps }: PokemonSpecie
             {
                 isSpecies === true ?
                     <div>
-                        <p id='pokemonLegendSpecies'>
-                            {currentSpecy + 1}/{pokemonSpeciesFiltered.length}
-                        </p>
                         {pokemonSpeciesFiltered.length > 0 ?
                             <div className='pokemonSpeciesTextContainer'>
                                 <p>{String(pokemonSpeciesFiltered[currentSpecy].flavor_text)}</p>
                                 <p id='pokemonLegendSpecies'>Version : {String(pokemonSpeciesFiltered[currentSpecy].version.name)}</p>
+                                <p id='pokemonLegendSpecies'>
+                                    {currentSpecy + 1}/{pokemonSpeciesFiltered.length}
+                                </p>
                             </div>
                             :
                             null
@@ -69,12 +87,8 @@ export const PokemonSpecies = ({ currentLangProps, pokemonProps }: PokemonSpecie
                             null
                         }
                         <div className='navSpeciesContainer'>
-                            {currentSpecy > 0 ?
-                                <div onClick={() => setCurrentSpecy(currentSpecy - 1)} className='arrowLeft'></div>
-                                : null}
-                            {currentSpecy + 1 !== pokemonSpeciesFiltered.length ?
-                                <div onClick={() => setCurrentSpecy(currentSpecy + 1)} className='arrowRight'></div>
-                                : null}
+                            <div onClick={navArrowLess} className='arrowLeft'></div>
+                            <div onClick={navArrowMore} className='arrowRight'></div>
                         </div>
                     </div>
                     : null
