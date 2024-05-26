@@ -26,6 +26,7 @@
     transition: all ease 0.2s;
     color: #efeeee;
     border-bottom: 2px solid #efeeee00;
+    padding-bottom: 8px;
 }
 
 .navPokemon:hover {
@@ -65,7 +66,7 @@
 .pokemonTypeTag {
     padding: 8px;
     text-transform: capitalize;
-    background-color: red;
+    background-color: #F5F5F5;
     width: fit-content;
     min-width: 100px;
     height: fit-content;
@@ -79,4 +80,6 @@
 .pokemonTypeTag > p {
     margin: 0;
     font-size: 15px;
+    font-weight: 500;
+    color: rgb(13, 13, 13);
 }

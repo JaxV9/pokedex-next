@@ -1,0 +1,62 @@
+.statsContainer {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-row: auto;
+    gap: 16px;
+}
+
+.stat {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    color: #efeeee;
+    text-transform: capitalize;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.statLabelContainer {
+    display: flex;
+    align-items: center; /* Centrer verticalement */
+    justify-content: flex-start;
+}
+
+.statLabelContainer > span {
+}
+
+.statProgressBarContainer {
+    width: 80%;
+    height: 70%;
+    background-color: rgb(213, 213, 213);
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 8px;
+    position: relative;
+}
+
+.statValue {
+    position: absolute;
+    top: 50%; /* Position à mi-hauteur du conteneur parent */
+    transform: translateY(-50%); /* Déplace l'élément vers le haut de la moitié de sa propre hauteur */
+    margin:auto;
+    right: 105%;
+}
+
+.progressBar {
+    background-color: #E3350D;
+    height: 100%;
+    border-radius: 8px;
+    transition: all ease-in-out 0.5s; /* Utilisez ease-in-out pour une animation plus douce */
+    animation: progressBar 1s ease-in-out; /* Augmentez la durée de l'animation pour la rendre plus douce */
+}
+
+@keyframes progressBar {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
