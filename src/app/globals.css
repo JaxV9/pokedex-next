@@ -9,6 +9,7 @@
 @import url('../components/pokemonList/style.css');
 @import url('../components/searchBar/style.css');
 @import url('../components/pokemonSpecies/style.css');
+@import url('../components/stats/style.css');
 
 /*ui*/
 @import url('../components/ui/buttons/loadMoreBtn/style.css');
