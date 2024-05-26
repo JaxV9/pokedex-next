@@ -7,6 +7,8 @@ import React, { useContext } from 'react';
 export default function Home() {
   const { isSearching, setIsSearching } = useContext(SearchContext)!;
 
+  const mentionEn = "Website created and maintained by LAYAN Jason"
+
   const toggleSearchBar = () => {
     setIsSearching(!isSearching);
   };
@@ -26,7 +28,7 @@ export default function Home() {
           </div>
           <div className="mentionHome">
             <Link href="https://www.linkedin.com/in/layan-jason-developpeur/">
-              Site créé et maintenu par LAYAN Jason
+              {mentionEn}
             </Link>
           </div>
         </div>
