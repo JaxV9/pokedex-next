@@ -12,6 +12,7 @@
   
 .layoutChildrenContainerNavEnabled {
     width: calc(100% - 150px);
+    margin-left: 150px;
     height: 100vh;
     transition: all ease 0.2s;
 }
@@ -35,6 +36,7 @@
     .layoutChildrenContainerNavEnabled {
         width: 100%;
         height: fit-content;
+        margin-left: 0px;
         transition: all ease 0.2s;
     }
   
