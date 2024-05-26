@@ -12,7 +12,6 @@
   
 .layoutChildrenContainerNavEnabled {
     width: calc(100% - 150px);
-    margin-left: 150px;
     height: 100vh;
     transition: all ease 0.2s;
 }
@@ -22,4 +21,21 @@
     height: 100vh;
     margin-left: 0px;
     transition: all ease 0.2s;
+}
+
+@media (max-width: 425px) {
+
+    .logoLayout {
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .layoutChildrenContainerNavEnabled {
+        width: 100%;
+        height: fit-content;
+        transition: all ease 0.2s;
+    }
+  
 }
