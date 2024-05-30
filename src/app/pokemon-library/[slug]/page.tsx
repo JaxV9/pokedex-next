@@ -40,7 +40,7 @@ export default function PokemonSheet() {
                     <div className='pokemonInfoHeroContainer'>
                         <div className='pokemonNameAndPictureContainer'>
                             <h1>{pokemon.name}</h1>
-                            <div onClick={() => (setIs3d(!is3d))} className={is3d ? 'threeDBtnContainer' : 'threeDBtnContainerFocus'}>
+                            <div onClick={() => (setIs3d(!is3d))} className={is3d ? 'threeDBtnContainerFocus' : 'threeDBtnContainer'}>
                                 <div className='threeDBtn'></div>
                             </div>
                             <img className={is3d ? "pokemonPicture3d" : "pokemonPicture"}

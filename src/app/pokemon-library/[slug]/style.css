@@ -1,12 +1,21 @@
 .pokemonPicture {
     width: 100%;
     max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .pokemonPicture3d {
     width: 100%;
     max-width: 350px;
     margin-bottom: 50px;
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .pokemonInfoContainer {
