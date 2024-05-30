@@ -1,0 +1,11 @@
+.evolutionContainer {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-row: auto;
+    gap: 16px;
+}
+
+.evolution {
+
+}

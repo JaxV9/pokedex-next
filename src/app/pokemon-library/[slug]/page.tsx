@@ -1,4 +1,5 @@
 'use client';
+import { Evolution } from '@/components/evolution/evolution';
 import { PokemonSpecies } from '@/components/pokemonSpecies/pokemonSpecies';
 import { Stats } from '@/components/stats/stats';
 import { StatsType } from '@/model/stats';
@@ -14,6 +15,7 @@ export default function PokemonSheet() {
     const [currentLang, setCurrentLang] = useState<string>("en")
 
     const [currentNav, setCurrentNav] = useState<string>("about")
+    const [is3d, setIs3d] = useState<boolean>(false)
 
 
     const fetchPokemon = async () => {
@@ -38,7 +40,12 @@ export default function PokemonSheet() {
                     <div className='pokemonInfoHeroContainer'>
                         <div className='pokemonNameAndPictureContainer'>
                             <h1>{pokemon.name}</h1>
-                            <img className="pokemonPicture" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} />
+                            <div onClick={() => (setIs3d(!is3d))} className={is3d ? 'threeDBtnContainer' : 'threeDBtnContainerFocus'}>
+                                <div className='threeDBtn'></div>
+                            </div>
+                            <img className={is3d ? "pokemonPicture3d" : "pokemonPicture"}
+                            src={is3d ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif`
+                            : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} />
                             <div>
                                 <div className='pokemonTypesContainer'>
                                     {pokemon.types.length > 0 ?
@@ -68,30 +75,18 @@ export default function PokemonSheet() {
                                     :
                                     null
                             }
-                                                        {
-                                currentNav === "stats" ?
-                                    <Stats statsProps={stats}/>
+                            {
+                                currentNav === "evolution" ?
+                                    <Evolution currentLangProps={currentLang} pokemonProps={pokemon}/>
                                     :
                                     null
                             }
-
-
-                            {/* <div className='pokemonStatsContainer'>
-                                <p>Height : {pokemon.height / 10}m</p>
-                                <p>Weight : {pokemon.weight / 10}kg</p>
-                                <div>
-                                    <p>Type :</p>
-                                    <div className='pokemonTypesContainer'>
-                                        {pokemon.types.length > 0 ?
-                                            pokemon.types.map((type, index) => (
-                                                <div className='pokemonTypeTag' key={index}>
-                                                    <p>{type.type.name}</p>
-                                                </div>
-                                            ))
-                                            : null}
-                                    </div>
-                                </div>
-                            </div> */}
+                            {
+                                currentNav === "stats" ?
+                                    <Stats statsProps={stats} />
+                                    :
+                                    null
+                            }
                         </div>
                     </div>
                 </section>

@@ -27,13 +27,14 @@
 
 .statProgressBarContainer {
     width: 80%;
-    height: 70%;
+    height: 50%;
     background-color: rgb(213, 213, 213);
     margin-left: auto;
     margin-top: auto;
     margin-bottom: auto;
-    border-radius: 8px;
+    border-radius: 16px;
     position: relative;
+    padding: 4px;
 }
 
 .statValue {
@@ -47,7 +48,7 @@
 .progressBar {
     background-color: #E3350D;
     height: 100%;
-    border-radius: 8px;
+    border-radius: 12px;
     transition: all ease-in-out 0.5s; /* Utilisez ease-in-out pour une animation plus douce */
     animation: progressBar 1s ease-in-out; /* Augmentez la durée de l'animation pour la rendre plus douce */
 }
