@@ -3,7 +3,7 @@
     height: fit-content;
     display: grid;
     grid-row: auto;
-    gap: 16px;
+    gap: 8px;
 }
 
 .stat {
@@ -27,8 +27,8 @@
 
 .statProgressBarContainer {
     width: 80%;
-    height: 50%;
-    background-color: rgb(213, 213, 213);
+    height: 40%;
+    background-color: #2F2F2F;
     margin-left: auto;
     margin-top: auto;
     margin-bottom: auto;

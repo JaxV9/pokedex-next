@@ -70,10 +70,12 @@ export const PokemonSpecies = ({ currentLangProps, pokemonProps }: PokemonSpecie
                         {pokemonSpeciesFiltered.length > 0 ?
                             <div className='pokemonSpeciesTextContainer'>
                                 <p>{String(pokemonSpeciesFiltered[currentSpecy].flavor_text)}</p>
-                                <p id='pokemonLegendSpecies'>Version : {String(pokemonSpeciesFiltered[currentSpecy].version.name)}</p>
-                                <p id='pokemonLegendSpecies'>
-                                    {currentSpecy + 1}/{pokemonSpeciesFiltered.length}
-                                </p>
+
+                                <div className='navSpeciesContainer'>
+                                    <p id='pokemonLegendSpecies'>{currentSpecy + 1}/{pokemonSpeciesFiltered.length} - Version : {String(pokemonSpeciesFiltered[currentSpecy].version.name)}</p>
+                                    <div onClick={navArrowLess} className='arrowLeft'></div>
+                                    <div onClick={navArrowMore} className='arrowRight'></div>
+                                </div>
                             </div>
                             :
                             null
@@ -86,10 +88,7 @@ export const PokemonSpecies = ({ currentLangProps, pokemonProps }: PokemonSpecie
                             :
                             null
                         }
-                        <div className='navSpeciesContainer'>
-                            <div onClick={navArrowLess} className='arrowLeft'></div>
-                            <div onClick={navArrowMore} className='arrowRight'></div>
-                        </div>
+
                     </div>
                     : null
             }

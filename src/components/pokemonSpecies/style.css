@@ -9,12 +9,14 @@
     backdrop-filter: blur(6.4px);
     -webkit-backdrop-filter: blur(6.4px);
     transition: all ease 0.2s;
+    margin-bottom: 28px;
 }
 
 .pokemonSpeciesTextContainer > p {
     text-align: justify;
     font-size: 18px;
     font-weight: 600;
+    margin-top: 0;
 }
 
 #pokemonLegendSpecies {
@@ -23,14 +25,14 @@
     font-weight: 500;
     color: rgb(198, 198, 198);
     font-style: italic;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
+    margin-right: auto;
 }
 
 .navSpeciesContainer {
     display: flex;
+    justify-content: flex-end;
     gap: 28px;
-    margin-top: 8px;
-    margin-bottom: 8px;
 }
 
 .arrowLeft, .arrowRight {

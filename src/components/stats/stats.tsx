@@ -2,16 +2,16 @@ import { StatsType } from "@/model/stats"
 import { useEffect, useState } from "react"
 
 type StatsPropsType = {
-    statsProps: StatsType[]
+    statsProps: StatsType[],
+    currentColorProps: string | undefined
 }
 
-export const Stats = ({ statsProps }: StatsPropsType) => {
+export const Stats = ({ statsProps, currentColorProps }: StatsPropsType) => {
 
     const [stats, setStats] = useState<StatsType[]>([])
 
     useEffect(() => {
         setStats(statsProps)
-        console.log(statsProps)
     }, [statsProps])
 
     return (
@@ -25,7 +25,7 @@ export const Stats = ({ statsProps }: StatsPropsType) => {
                             </div>
                             <div className="statProgressBarContainer">
                                 <span className="statValue">{stat.base_stat}</span>
-                                <div className="progressBar" style={{maxWidth: stat.base_stat/2 + "%"}}></div>
+                                <div className="progressBar" style={{maxWidth: stat.base_stat/2 + "%", backgroundColor: currentColorProps}}></div>
                             </div>
                         </div>
                     ))

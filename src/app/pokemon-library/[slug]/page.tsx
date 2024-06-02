@@ -16,8 +16,9 @@ export default function PokemonSheet() {
     const [pokemon, setPokemon] = useState<PokemonDatas | null>(null)
     const [stats, setStats] = useState<StatsType[]>([])
     const [currentLang, setCurrentLang] = useState<string>("en")
-    const [currentNav, setCurrentNav] = useState<string>("about")
+    const [currentNav, setCurrentNav] = useState<string>("stats")
     const [is3d, setIs3d] = useState<boolean>(false)
+    const [currentColor, setCurrentColor] = useState<string | undefined>(undefined)
 
 
     const fetchPokemon = async () => {
@@ -34,6 +35,12 @@ export default function PokemonSheet() {
     useEffect(() => {
         fetchPokemon()
     }, [])
+
+    useEffect(() => {
+        const type = pokemon?.types[0]
+        const typeColor = pokeTypesColor.find(colorType => colorType.type === type?.type.name);
+        setCurrentColor(typeColor?.background)
+    }, [pokemon?.types])
 
     return (
         <>
@@ -66,22 +73,15 @@ export default function PokemonSheet() {
                             </div>
                         </div>
                         <div className='pokemonDatasContainer'>
+                            <PokemonSpecies currentLangProps={currentLang} pokemonProps={pokemon} />
                             <div className='navPokemonContainer'>
-                                <span className={currentNav === "about" ? "navPokemon focusNav" : "navPokemon"}
-                                    onClick={() => setCurrentNav("about")}>About</span>
+                            <span className={currentNav === "stats" ? "navPokemon focusNav" : "navPokemon"}
+                                    onClick={() => setCurrentNav("stats")}>Stats</span>
                                 <span className={currentNav === "evolution" ? "navPokemon focusNav" : "navPokemon"}
                                     onClick={() => setCurrentNav("evolution")}>Evolutions</span>
-                                <span className={currentNav === "stats" ? "navPokemon focusNav" : "navPokemon"}
-                                    onClick={() => setCurrentNav("stats")}>Stats</span>
                                 <span className={currentNav === "moves" ? "navPokemon focusNav" : "navPokemon"}
                                     onClick={() => setCurrentNav("moves")}>Moves</span>
                             </div>
-                            {
-                                currentNav === "about" ?
-                                    <PokemonSpecies currentLangProps={currentLang} pokemonProps={pokemon} />
-                                    :
-                                    null
-                            }
                             {
                                 currentNav === "evolution" ?
                                     <Evolution currentLangProps={currentLang} pokemonProps={pokemon} />
@@ -90,7 +90,7 @@ export default function PokemonSheet() {
                             }
                             {
                                 currentNav === "stats" ?
-                                    <Stats statsProps={stats} />
+                                    <Stats statsProps={stats} currentColorProps={currentColor} />
                                     :
                                     null
                             }
