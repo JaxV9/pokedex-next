@@ -1,6 +1,7 @@
 import { EvolutionChainType, EvolutionType, SpeciesType } from "@/model/evolution"
 import { getLastElementFromUrl } from "@/utils/format"
 import { url } from "inspector"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 type EvolutionPropsType = {
@@ -26,11 +27,11 @@ export const Evolution = ({ currentLangProps, pokemonProps, evolutionUrlProps }:
 
     const getEvolutionNames = (evolutionChain: EvolutionChainType): SpeciesType[] => {
         let species = [{ name: evolutionChain.species.name, url: evolutionChain.species.url }];
-    
+
         evolutionChain.evolves_to.forEach(ev => {
             species = [...species, ...getEvolutionNames(ev)];
         });
-    
+
         return species;
     }
 
@@ -47,17 +48,20 @@ export const Evolution = ({ currentLangProps, pokemonProps, evolutionUrlProps }:
             <div className="evolutionContainer">
                 {
                     evolution ?
-                    getEvolutionNames(evolution.chain).map(
+                        getEvolutionNames(evolution.chain).map(
                             (species, index) => (
-                                <div className="evolution" key={index}>
-                                <div className="evolutionPicture"
-                                style={{backgroundImage: `url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${getLastElementFromUrl(species.url)}.png`}}>
-                                </div>
-                                <p className="pokemonEvolutionLabel">{species.name}</p>
-                            </div>
+                                <Link href={"/pokemon-library/" + species.name} key={index}>
+                                    <div className="evolution">
+                                        <div className="evolutionPicture"
+                                            style={{ backgroundImage: `url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${getLastElementFromUrl(species.url)}.png` }}>
+
+                                        </div>
+                                        <p className="pokemonEvolutionLabel">{species.name}</p>
+                                    </div>
+                                </Link>
                             )
                         )
-                    : null
+                        : null
                 }
 
             </div>

@@ -12,6 +12,12 @@
     width: 200px;
     height: 200px;
     animation: fadeIn 0.2s ease-in;
+    cursor: pointer;
+}
+
+.evolution:hover {
+    scale: 1.02;
+    transition: 0.2s all ease;
 }
 
 .evolutionPicture {
@@ -22,12 +28,6 @@
     background-size: cover;
     transition: 0.2s all ease;
 }
-
-.evolutionPicture:hover {
-    scale: 1.02;
-    transition: 0.2s all ease;
-}
-
 
 .pokemonEvolutionLabel {
     text-transform: capitalize;
