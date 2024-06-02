@@ -141,9 +141,15 @@
 @media (max-width: 768px) {
 
     .pokemonInfoHeroContainer {
-        width: 100%;
         grid-template-columns: none;
         grid-template-rows: auto;
         row-gap: 50px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    .pokemonInfoContainer {
+        width: 95%;
     }
 }

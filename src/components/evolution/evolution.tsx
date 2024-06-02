@@ -19,9 +19,6 @@ export const Evolution = ({currentLangProps, pokemonProps}:EvolutionPropsType ) 
     //     }
     // }
 
-    useEffect(() => {
-        console.log(pokemonProps)
-    },[pokemonProps])
 
 
     return (
