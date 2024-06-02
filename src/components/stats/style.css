@@ -14,6 +14,7 @@
     text-transform: capitalize;
     display: grid;
     grid-template-columns: 1fr 3fr;
+    animation: fadeIn 0.2s ease-in;
 }
 
 .statLabelContainer {

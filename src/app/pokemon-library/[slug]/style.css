@@ -60,6 +60,7 @@
 
 .pokemonNameAndPictureContainer {
     position: relative;
+    animation: fadeIn 0.2s ease-in;
 }
 
 .pokemonInfoHeroContainer {

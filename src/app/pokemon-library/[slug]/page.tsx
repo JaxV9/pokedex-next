@@ -15,6 +15,7 @@ export default function PokemonSheet() {
 
     const [pokemon, setPokemon] = useState<PokemonDatas | null>(null)
     const [stats, setStats] = useState<StatsType[]>([])
+    const [evolutionUrl, setEvolutionUrl] = useState<string>("")
     const [currentLang, setCurrentLang] = useState<string>("en")
     const [currentNav, setCurrentNav] = useState<string>("stats")
     const [is3d, setIs3d] = useState<boolean>(false)
@@ -41,6 +42,7 @@ export default function PokemonSheet() {
         const typeColor = pokeTypesColor.find(colorType => colorType.type === type?.type.name);
         setCurrentColor(typeColor?.background)
     }, [pokemon?.types])
+
 
     return (
         <>
@@ -73,7 +75,7 @@ export default function PokemonSheet() {
                             </div>
                         </div>
                         <div className='pokemonDatasContainer'>
-                            <PokemonSpecies currentLangProps={currentLang} pokemonProps={pokemon} />
+                            <PokemonSpecies currentLangProps={currentLang} pokemonProps={pokemon} setEvolutionUrlProps={setEvolutionUrl}/>
                             <div className='navPokemonContainer'>
                             <span className={currentNav === "stats" ? "navPokemon focusNav" : "navPokemon"}
                                     onClick={() => setCurrentNav("stats")}>Stats</span>
@@ -84,7 +86,7 @@ export default function PokemonSheet() {
                             </div>
                             {
                                 currentNav === "evolution" ?
-                                    <Evolution currentLangProps={currentLang} pokemonProps={pokemon} />
+                                    <Evolution currentLangProps={currentLang} pokemonProps={pokemon} evolutionUrlProps={evolutionUrl}/>
                                     :
                                     null
                             }

@@ -16,12 +16,6 @@
     transition: all ease 0.2s;
 }
 
-
-@keyframes shine {
-    to {
-      background-position-x: -200%;
-    }
-  }
   
 
 .pokemoncard {
@@ -61,10 +55,7 @@
     font-size: 18px;
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
+
 
 .pokemoncard:hover {
     scale: 1.02;

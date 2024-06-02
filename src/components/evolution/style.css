@@ -1,11 +1,35 @@
 .evolutionContainer {
     width: 100%;
-    height: fit-content;
-    display: grid;
-    grid-row: auto;
-    gap: 16px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    row-gap: 28px;
+    justify-content: space-around;
 }
 
 .evolution {
+    width: 200px;
+    height: 200px;
+    animation: fadeIn 0.2s ease-in;
+}
 
+.evolutionPicture {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.2s all ease;
+}
+
+.evolutionPicture:hover {
+    scale: 1.02;
+    transition: 0.2s all ease;
+}
+
+
+.pokemonEvolutionLabel {
+    text-transform: capitalize;
+    text-align: center;
 }

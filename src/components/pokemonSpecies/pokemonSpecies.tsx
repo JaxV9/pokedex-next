@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 
 type PokemonSpeciesPropsType = {
     currentLangProps: string,
-    pokemonProps: PokemonType | null
+    pokemonProps: PokemonType | null,
+    setEvolutionUrlProps: (newUrl: string) => void
 }
 
-export const PokemonSpecies = ({ currentLangProps, pokemonProps }: PokemonSpeciesPropsType) => {
+export const PokemonSpecies = ({ currentLangProps, pokemonProps, setEvolutionUrlProps }: PokemonSpeciesPropsType) => {
 
     const [pokemonSpecies, setPokemonSpecies] = useState<PokemonSpecies[]>([])
     const [isSpecies, setIsSpecies] = useState<boolean>(true)
@@ -33,6 +34,7 @@ export const PokemonSpecies = ({ currentLangProps, pokemonProps }: PokemonSpecie
             }
             let data = await response.json()
             setPokemonSpecies(data.flavor_text_entries)
+            setEvolutionUrlProps(data.evolution_chain.url)
         } catch {
             console.log("error")
         }
