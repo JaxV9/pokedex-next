@@ -4,16 +4,18 @@ import { PokemonSpecies } from '@/components/pokemonSpecies/pokemonSpecies';
 import { Stats } from '@/components/stats/stats';
 import { StatsType } from '@/model/stats';
 import { useParams } from 'next/navigation'
-import { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import PokeTypesColorContext from '@/contexts/pokeTypesColor';
 
 
 export default function PokemonSheet() {
 
     const { slug } = useParams() as { slug: string }
+    const pokeTypesColor = React.useContext(PokeTypesColorContext);
+
     const [pokemon, setPokemon] = useState<PokemonDatas | null>(null)
     const [stats, setStats] = useState<StatsType[]>([])
     const [currentLang, setCurrentLang] = useState<string>("en")
-
     const [currentNav, setCurrentNav] = useState<string>("about")
     const [is3d, setIs3d] = useState<boolean>(false)
 
@@ -44,16 +46,21 @@ export default function PokemonSheet() {
                                 <div className='threeDBtn'></div>
                             </div>
                             <img className={is3d ? "pokemonPicture3d" : "pokemonPicture"}
-                            src={is3d ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif`
-                            : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} />
+                                src={is3d ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif`
+                                    : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} />
                             <div>
                                 <div className='pokemonTypesContainer'>
                                     {pokemon.types.length > 0 ?
-                                        pokemon.types.map((type, index) => (
-                                            <div className='pokemonTypeTag' key={index}>
-                                                <p>{type.type.name}</p>
-                                            </div>
-                                        ))
+                                        pokemon.types.map((type, index) => {
+                                            const typeColor = pokeTypesColor.find(colorType => colorType.type === type.type.name);
+                                            const backgroundColor = typeColor?.background || 'red';
+                                            const textColor = typeColor?.text || 'black';
+                                            return (
+                                                <div className='pokemonTypeTag' key={index} style={{ backgroundColor: backgroundColor, color: textColor }}>
+                                                    <p>{type.type.name}</p>
+                                                </div>
+                                            )
+                                        })
                                         : null}
                                 </div>
                             </div>
@@ -77,7 +84,7 @@ export default function PokemonSheet() {
                             }
                             {
                                 currentNav === "evolution" ?
-                                    <Evolution currentLangProps={currentLang} pokemonProps={pokemon}/>
+                                    <Evolution currentLangProps={currentLang} pokemonProps={pokemon} />
                                     :
                                     null
                             }

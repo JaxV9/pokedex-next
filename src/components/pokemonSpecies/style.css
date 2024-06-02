@@ -1,6 +1,6 @@
 
 .pokemonSpeciesTextContainer {
-    width: 100%;
+    width: calc(100% - 32px);
     height: fit-content;
     padding: 16px;
     background: rgba(47, 47, 47, 0.768);
