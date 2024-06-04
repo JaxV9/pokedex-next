@@ -6,6 +6,8 @@ import { StatsType } from '@/model/stats';
 import { useParams } from 'next/navigation'
 import React, { useContext, useEffect, useState } from 'react';
 import PokeTypesColorContext from '@/contexts/pokeTypesColor';
+import { Move } from '@/components/move/move';
+import { MovesType } from '@/model/moves';
 
 
 export default function PokemonSheet() {
@@ -15,6 +17,7 @@ export default function PokemonSheet() {
 
     const [pokemon, setPokemon] = useState<PokemonDatas | null>(null)
     const [stats, setStats] = useState<StatsType[]>([])
+    const [moves, setMoves] = useState<MovesType[]>([])
     const [evolutionUrl, setEvolutionUrl] = useState<string>("")
     const [currentLang, setCurrentLang] = useState<string>("en")
     const [currentNav, setCurrentNav] = useState<string>("stats")
@@ -28,6 +31,7 @@ export default function PokemonSheet() {
             let data = await response.json()
             setStats(data.stats)
             setPokemon(data);
+            setMoves(data.moves)
         } catch {
             console.log("error")
         }
@@ -95,6 +99,12 @@ export default function PokemonSheet() {
                                     <Stats statsProps={stats} currentColorProps={currentColor} />
                                     :
                                     null
+                            }
+                            {
+                                currentNav === "moves" ?
+                                <Move movesProps={moves}/> // Update the prop name from 'movesProps' to 'moves'
+                                :
+                                null
                             }
                         </div>
                     </div>

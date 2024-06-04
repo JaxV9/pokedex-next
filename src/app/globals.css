@@ -11,6 +11,7 @@
 @import url('../components/pokemonSpecies/style.css');
 @import url('../components/stats/style.css');
 @import url('../components/evolution/style.css');
+@import url('../components/move/style.css');
 
 /*ui*/
 @import url('../components/ui/buttons/loadMoreBtn/style.css');

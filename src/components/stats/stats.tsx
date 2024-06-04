@@ -8,17 +8,12 @@ type StatsPropsType = {
 
 export const Stats = ({ statsProps, currentColorProps }: StatsPropsType) => {
 
-    const [stats, setStats] = useState<StatsType[]>([])
-
-    useEffect(() => {
-        setStats(statsProps)
-    }, [statsProps])
 
     return (
         <>
             <div className="statsContainer">
-                {stats.length > 0 ?
-                    stats.map((stat, index) => (
+                {statsProps.length > 0 ?
+                    statsProps.map((stat, index) => (
                         <div className="stat" key={index}>
                             <div className="statLabelContainer">
                                 <span>{stat.stat.name}</span>
